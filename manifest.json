@@ -1,0 +1,29 @@
+{
+  "id": "parallax-wallpaper",
+  "name": "Parallax Wallpaper",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "4.4.0",
+  "author": "Qholin",
+  "license": "MIT",
+  "description": "Customizable parallax effect for the wallpaper based on the active workspace.",
+  "tags": ["Desktop"],
+  "entryPoints": {
+    "main": "Main.qml",
+    "settings": "Settings.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {
+      "zoomAmount": 1.3,
+      "parallaxDirection": "horizontal",
+      "hParallaxAmount": 32,
+      "hParallaxDuration": 300,
+      "vParallaxAmount": 16,
+      "vParallaxDuration": 300,
+      "invertDirection": false,
+      "parallaxEasing": "OutCubic"
+    }
+  }
+}
