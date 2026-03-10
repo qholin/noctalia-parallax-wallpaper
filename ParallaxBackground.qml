@@ -35,6 +35,7 @@ Variants {
       readonly property real vParallaxAmount: cfg.vParallaxAmount ?? defaults.vParallaxAmount ?? 50
       readonly property int vParallaxDuration: cfg.vParallaxDuration ?? defaults.vParallaxDuration ?? 400
       readonly property bool invertDirection: cfg.invertDirection ?? defaults.invertDirection ?? false
+      readonly property bool autoZoom: cfg.autoZoom ?? defaults.autoZoom ?? false
       readonly property string parallaxEasingStr: cfg.parallaxEasing ?? defaults.parallaxEasing ?? "OutCubic"
 
       // ── Parallax state ──
@@ -296,7 +297,14 @@ Variants {
         anchors.fill: parent
         active: true
 
-        scale: root.zoomAmount
+        scale: {
+          if (!root.autoZoom) return root.zoomAmount;
+          var ax = 2 * Math.abs(root.parallaxX);
+          var ay = 2 * Math.abs(root.parallaxY);
+          var zx = (width > ax) ? width / (width - ax) : root.zoomAmount;
+          var zy = (height > ay) ? height / (height - ay) : root.zoomAmount;
+          return Math.max(root.zoomAmount, zx, zy);
+        }
         transform: Translate {
           x: root.parallaxX
           y: root.parallaxY

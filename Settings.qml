@@ -19,6 +19,7 @@ ColumnLayout {
   property real vParallaxAmount: cfg.vParallaxAmount ?? defaults.vParallaxAmount ?? 50
   property int vParallaxDuration: cfg.vParallaxDuration ?? defaults.vParallaxDuration ?? 400
   property bool invertDirection: cfg.invertDirection ?? defaults.invertDirection ?? false
+  property bool autoZoom: cfg.autoZoom ?? defaults.autoZoom ?? false
   property string parallaxEasing: cfg.parallaxEasing ?? defaults.parallaxEasing ?? "OutCubic"
 
   readonly property bool showHorizontal: parallaxDirection === "horizontal" || parallaxDirection === "both"
@@ -151,6 +152,20 @@ ColumnLayout {
     }
   }
 
+  // ── Auto Zoom ──
+
+  NDivider { Layout.fillWidth: true }
+
+  NToggle {
+    label: "Auto Zoom"
+    description: "Automatically increase zoom to prevent wallpaper edges from showing"
+    checked: root.autoZoom
+    onToggled: checked => {
+      root.autoZoom = checked;
+      root.saveSettings();
+    }
+  }
+
   // ── Easing Curve ──
 
   NDivider { Layout.fillWidth: true }
@@ -194,6 +209,7 @@ ColumnLayout {
     pluginApi.pluginSettings.vParallaxAmount = root.vParallaxAmount;
     pluginApi.pluginSettings.vParallaxDuration = root.vParallaxDuration;
     pluginApi.pluginSettings.invertDirection = root.invertDirection;
+    pluginApi.pluginSettings.autoZoom = root.autoZoom;
     pluginApi.pluginSettings.parallaxEasing = root.parallaxEasing;
 
     pluginApi.saveSettings();
