@@ -11,7 +11,7 @@ A [Noctalia Shell](https://github.com/noctalia/noctalia-shell) plugin that adds 
 - **Customizable easing curves** — 13 easing options
 - **Adjustable zoom** — controls how much the wallpaper should be zoomed in to create room for parallax
 - **Real-time preview** — settings update the wallpaper instantly
-- **Auto zoom** — optionally auto-increases zoom to prevent wallpaper edges from showing on distant workspaces
+- **Auto zoom** — auto-increases zoom to prevent wallpaper edges from showing on distant workspaces (optional)
 - **Full wallpaper engine** — supports all of Noctalia's wallpaper transitions
 - **Wallpaper selector stays functional** — change wallpapers normally while the plugin is active
 
